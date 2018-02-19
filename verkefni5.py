@@ -1,5 +1,6 @@
 from bottle import *
 import urllib.request, json
+import os
 
 
 with urllib.request.urlopen("http://apis.is/concerts") as url:
@@ -18,4 +19,4 @@ def static_skrar(file):
 def error404(error):
     return '<p>This webside dose not exist</p><a href="/">back</>'
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=os.environ.get('PORT'))
